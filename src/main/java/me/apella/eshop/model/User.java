@@ -1,26 +1,35 @@
 package me.apella.eshop.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
 @Entity
-public class Customer {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @NotBlank(message = "Name is required!")
     private String name;
+    @NotBlank(message = "Email is required!")
+    @Email(message = "${validationValue} is not a valid email")
+    @Column(unique = true)
     private String email;
+    @NotBlank(message = "Password is required!")
+    @NotNull
+    @Size(min = 8, message = "Password should contain at least ${min} characters.")
+    @Size(max = 100, message = "Password should contain at most ${max} characters.")
     private String password;
     private String shippingAddress;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(UUID id, String name, String email, String password, String shippingAddress) {
+    public User(UUID id, String name, String email, String password, String shippingAddress) {
         this.id = id;
         this.name = name;
         this.email = email;

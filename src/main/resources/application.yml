@@ -43,4 +43,4 @@ info:
     description: Application for allowing operations on an ecommerce website
     version: 0.0.1
 
-debug: true
+debug: false
