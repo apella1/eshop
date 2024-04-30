@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: eshop
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eshop
+    username: symbiont
+    password: symbiont
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+# Logging
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+# Actuator config
+management:
+  endpoint:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
+  info:
+    env:
+      enabled: true
+
+
+server:
+  shutdown: graceful
+
+
+info:
+  app:
+    name: Eshop API
+    description: Application for allowing operations on an ecommerce website
+    version: 0.0.1
+
+debug: true
