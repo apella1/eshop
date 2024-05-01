@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<String> createCustomer(@RequestBody User customer) {
         userService.createUser(customer);
-        return new ResponseEntity<>("Customer created successfully!", HttpStatus.CREATED);
+        return new ResponseEntity<>("User created successfully!", HttpStatus.CREATED);
     }
 
     @GetMapping("/{userId}")

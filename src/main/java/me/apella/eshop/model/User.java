@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
